@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | Anime</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <a href="#"><img width="130" src="img/Anime.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">Anime Merch</a></li>
+        <li><a href="Upcoming.html">Upcoming</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a class="active" href="signup.html">Signup</a></li>
+      </ul>
+    </div>
+    <div id="mobile">
+      <i id="bar" class="fa-solid fa-bars"></i>
+    </div>
+  </section>
+
+  <!-- Signup Form -->
+  <section class="login-container">
+    <h2>Create Account</h2>
+    <form id="signup-form" class="login-form">
+      <input id="name" type="text" placeholder="Full Name" required>
+      <input id="email" type="email" placeholder="Email Address" required>
+      <input id="password" type="password" placeholder="Password" required>
+      <input id="confirm" type="password" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </section>
+
+  <!-- ✅ Unified Firebase Setup -->
+  <script type="module">
+    import { auth } from "./firebase.js";
+    import { createUserWithEmailAndPassword, updateProfile }
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const signupForm = document.getElementById("signup-form");
+
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm").value;
+
+      if (password !== confirm) {
+        alert("❌ Passwords do not match!");
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => updateProfile(userCredential.user, { displayName: name }))
+        .then(() => {
+          alert("🎉 Account created successfully! You're now logged in.");
+          window.location.href = "index.html"; // directly logged in
+        })
+        .catch((error) => alert("❌ " + error.message));
+    });
+  </script>
+
+</body>
+
+</html>

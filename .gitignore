@@ -1,0 +1,11 @@
+# Ignore archives and temp files
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Ignore dependencies or builds
+node_modules/
+dist/
+build/

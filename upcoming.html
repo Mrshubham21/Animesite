@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="main.js"></script>
+  <title>Anime</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <a href="#"><img width="130" src="img/Anime.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">Anime Merch</a></li>
+        <li><a class="active" href="Upcoming.html">Upcoming</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+         <li><a href="#" id="logoutBtn" style="display:none;">Logout</a></li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- Page header -->
+  <section id="page-header" class="upcoming-header">
+    <h2>#StayHome Enjoy</h2>
+    <p>Upcoming Animes!</p>
+  </section>
+
+  <!-- Upcoming Animes -->
+  <section id="Upcoming">
+    <div class="upcom-box">
+      <div class="up-img">
+        <img src="img/upcoming/demonslayer.png" alt="">
+      </div>
+      <div class="up-details">
+        <h4>DemonSlayer Infinity Castle</h4>
+        <p>Demon Slayer is coming to an end with a trilogy of movies adapting the Infinity Castle arc. We can
+          expect showdowns galore as Tanjiro and the remaining Hashira are drawn into Muzan Kibutsuji's
+          titular Infinity Castle in this final act.</p>
+        <h5><a href="">Continue Reading..</a></h5>
+      </div>
+    </div>
+
+    <div class="upcom-box">
+      <div class="up-img">
+        <img src="img/upcoming/onepunch.png" alt="">
+      </div>
+      <div class="up-details">
+        <h4>One Punch Man season 3</h4>
+        <p>It's been a minute but we expect to see more from Saitama and his penchant for knocking out
+          supervillains with, you guessed it, just one punch. The hype surrounding the show had died down a
+          little but an incredible new trailer increased our expectations for the continued adaptation of the
+          Monster Association arc.</p>
+        <h5><a href="">Continue Reading..</a></h5>
+      </div>
+    </div>
+
+    <div class="upcom-box">
+      <div class="up-img">
+        <img src="img/upcoming/myhero.jpg" alt="">
+      </div>
+      <div class="up-details">
+        <h4>My Hero Academia</h4>
+        <p>My Hero Academia season 8 is finally hitting our screens, and we can't wait to see the outcome of
+          Deku's epic final fight against Shigaraki. Yes, this is the final season of the popular anime
+          series. Adapting the final arcs from Kohei Horikoshi's popular manga, the show is getting ready to say
+          goodbye. There's a real sense of finality surrounding My Hero Academia season 8, including some
+          recent major deaths. After all, it's the end of an era for an extremely popular franchise.</p>
+        <h5><a href="">Continue Reading..</a></h5>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+      <h4>Sign Up For More Info</h4>
+      <p>Get E-Mail Updates For New Anime</p>
+    </div>
+    <div class="form">
+      <input type="text" placeholder="Your E-Mail Address">
+      <button class="normal1">Sign Up</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="img/Anime.png" alt="">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+   <script>
+// Scroll animation for upcoming section
+document.addEventListener("DOMContentLoaded", () => {
+  const boxes = document.querySelectorAll("#Upcoming .upcom-box");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  boxes.forEach(box => observer.observe(box));
+});
+
+  </script>
+</body>
+
+</html>

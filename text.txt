@@ -1,0 +1,36 @@
+<script type="module">
+import { auth, onAuthStateChanged, signOut } from "./firebase.js";
+
+const navbar = document.getElementById("navbar");
+const loginLink = navbar.querySelector("a[href='login.html']");
+const signupLink = navbar.querySelector("a[href='singup.html']");
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // Hide login/signup
+    if (loginLink) loginLink.style.display = "none";
+    if (signupLink) signupLink.style.display = "none";
+
+    // Add logout if not already there
+    if (!navbar.querySelector("#logoutLink")) {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="#" id="logoutLink">Logout</a>`;
+      navbar.appendChild(li);
+
+      li.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth).then(() => {
+          alert("Logged out successfully!");
+          window.location.href = "index.html";
+        });
+      });
+    }
+  } else {
+    // Show login/signup
+    if (loginLink) loginLink.style.display = "inline-block";
+    if (signupLink) signupLink.style.display = "inline-block";
+    const logout = navbar.querySelector("#logoutLink");
+    if (logout) logout.remove();
+  }
+});
+</script>

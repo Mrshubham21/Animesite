@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="main.js"></script>
+  <title>Anime | Product</title>
+</head>
+<body>
+  <!-- Header -->
+  <section id="header">
+    <a href="#"><img width="130" src="img/Anime.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="About.html">Anime Merch</a></li>
+        <li><a href="Upcoming.html">Upcoming</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+    <div id="mobile">
+      <i id="bar" class="fa-solid fa-bars"></i>
+    </div>
+  </section>
+
+  <!-- Product details -->
+  <section id="prodetails" class="section-p1">
+    <div class="single-image">
+      <img src="img/about/10.jpg" width="100%" id="mainimg" alt="">
+      <div class="small-group">
+        <div class="small-img"><img src="img/about/2.jpg" width="100%" class="smallimg" alt=""></div>
+        <div class="small-img"><img src="img/about/51.jpg" width="100%" class="smallimg" alt=""></div>
+        <div class="small-img"><img src="img/about/52.jpg" width="100%" class="smallimg" alt=""></div>
+        <div class="small-img"><img src="img/about/101.jpg" width="100%" class="smallimg" alt=""></div>
+      </div>
+    </div>
+
+    <div class="single-pro-details">
+      <h6>Home / Hoodie</h6>
+      <h4 id="productName">Sasuke Uchiha Hoodie</h4>
+      <h2 id="productPrice">$60</h2>
+      <select id="productSize">
+        <option value="">Select Size</option>
+        <option value="XL">XL</option>
+        <option value="L">L</option>
+        <option value="M">M</option>
+      </select>
+      <input type="number" id="productQty" value="1" min="1">
+      <button class="normal" id="addToCart">Add To Cart</button>
+      <h4>Product Details</h4>
+      <span>Sasuke Uchiha Hoodie from Boruto using his favourite Jutsu — Chidori.</span>
+    </div>
+  </section>
+
+<script type="module">
+import { auth, onAuthStateChanged } from "./firebase.js";
+
+onAuthStateChanged(auth, (user) => {
+  const addBtn = document.getElementById("addToCart");
+
+  addBtn.addEventListener("click", () => {
+    if (!user) {
+      alert("⚠️ Please login to add items to cart.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    const name = document.getElementById("productName").textContent;
+    const price = parseFloat(document.getElementById("productPrice").textContent.replace("$", ""));
+    const qty = parseInt(document.getElementById("productQty").value);
+    const size = document.getElementById("productSize").value || "M";
+    const image = document.getElementById("mainimg").src;
+
+    const newItem = { name, price, qty, size, image };
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existing = cart.find(item => item.name === name && item.size === size);
+    if (existing) existing.qty += qty;
+    else cart.push(newItem);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("✅ Item added to cart!");
+    window.location.href = "cart.html";
+  });
+});
+</script>
+
+
+
+</body>
+</html>

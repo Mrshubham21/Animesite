@@ -2276,3 +2276,360 @@ footer a {
         transition: none;
     }
 }
+
+/* Responsive polish shared across all pages */
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#header {
+    gap: 24px;
+}
+
+#navbar {
+    transition: right 0.3s ease;
+}
+
+#product1 .pro-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+#product1 .pro {
+    width: 100%;
+    min-width: 0;
+}
+
+#cart {
+    overflow-x: auto;
+}
+
+#cart table {
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+#cart td {
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
+#cart input[type="number"] {
+    width: 72px;
+}
+
+.people img {
+    max-width: 72px;
+    height: auto;
+}
+
+@media (max-width: 1100px) {
+    .section-p1,
+    #product1 {
+        padding-left: 42px;
+        padding-right: 42px;
+    }
+
+    #header {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    #Upcoming {
+        padding: 80px 60px;
+    }
+
+    #prodetails .single-image {
+        width: 38%;
+        margin: 32px;
+    }
+
+    #prodetails .single-pro-details {
+        width: 56%;
+        padding-top: 56px;
+    }
+
+    #form-details {
+        padding: 48px;
+    }
+}
+
+@media (max-width: 799px) {
+    h1 {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    h2 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+
+    .section-p1,
+    #product1 {
+        padding: 34px 24px;
+    }
+
+    #header {
+        padding: 12px 24px;
+    }
+
+    #header .logo {
+        width: 108px;
+    }
+
+    #navbar {
+        right: -320px;
+        width: min(300px, 82vw);
+        padding: 86px 0 24px 24px;
+        z-index: 1000;
+    }
+
+    #navbar.active {
+        right: 0;
+    }
+
+    #navbar li {
+        padding: 0;
+        margin-bottom: 22px;
+    }
+
+    #hero {
+        min-height: 72vh;
+        padding: 0 28px;
+        background-position: center;
+    }
+
+    #hero h4 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    #hero h2 {
+        max-width: 560px;
+    }
+
+    #page-header,
+    #page-header.contax,
+    #page-header.upcoming-header {
+        min-height: 220px;
+        height: auto;
+        padding: 46px 20px;
+    }
+
+    #sm-banner {
+        gap: 18px;
+    }
+
+    #sm-banner .banner-box {
+        min-width: 100%;
+        height: auto;
+        min-height: 260px;
+    }
+
+    #newsletter {
+        gap: 22px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #newsletter .form {
+        width: min(100%, 560px);
+    }
+
+    footer {
+        gap: 18px;
+    }
+
+    footer .col {
+        width: calc(50% - 12px);
+    }
+
+    #prodetails {
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 0;
+    }
+
+    #prodetails .single-image,
+    #prodetails .single-pro-details {
+        width: 100%;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    #prodetails .single-image {
+        max-width: 520px;
+        align-self: center;
+    }
+
+    #Upcoming {
+        padding: 56px 28px;
+    }
+
+    #Upcoming .upcom-box {
+        flex-direction: column;
+        gap: 24px;
+        padding-bottom: 64px;
+    }
+
+    #Upcoming .up-img,
+    #Upcoming .up-details {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #Upcoming img {
+        height: auto;
+        max-height: 420px;
+        aspect-ratio: 16 / 10;
+    }
+
+    #contact-details {
+        flex-direction: column;
+        gap: 28px;
+        padding: 34px 24px;
+    }
+
+    #contact-details .details,
+    #contact-details .map {
+        width: 100%;
+    }
+
+    #contact-details .map {
+        height: 340px;
+    }
+
+    #form-details {
+        flex-direction: column;
+        gap: 30px;
+        margin: 24px;
+        padding: 34px 24px;
+    }
+
+    #form-details form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    h1 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+
+    h2 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .section-p1,
+    #product1 {
+        padding: 28px 16px;
+    }
+
+    #header {
+        padding: 10px 16px;
+    }
+
+    #hero {
+        min-height: 68vh;
+        padding: 0 18px 74px;
+        justify-content: flex-end;
+    }
+
+    #hero h2 {
+        font-size: 34px;
+        line-height: 36px;
+    }
+
+    #hero h1 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    #product1 .pro-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .hover-info {
+        font-size: 13px;
+        line-height: 1.35;
+        padding: 12px;
+    }
+
+    #newsletter .form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #newsletter input,
+    #newsletter .normal1 {
+        width: 100%;
+        border-radius: 6px;
+        margin: 0;
+    }
+
+    footer .col {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer .logo {
+        width: 130px;
+    }
+
+    #prodetails .single-pro-details input {
+        width: 64px;
+    }
+
+    #prodetails .single-pro-details button {
+        display: block;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    #Upcoming {
+        padding: 42px 16px;
+    }
+
+    #Upcoming .upcom-box {
+        padding-bottom: 48px;
+    }
+
+    #contact-details .map {
+        height: 280px;
+    }
+
+    #form-details {
+        margin: 16px;
+        padding: 24px 16px;
+    }
+
+    #page-header.contax::after {
+        width: 82%;
+        height: 140px;
+    }
+
+    .login-container {
+        padding: 36px 16px;
+    }
+
+    .login-form {
+        width: min(100%, 420px);
+    }
+}

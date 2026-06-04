@@ -1,18 +1,31 @@
-const bar = document.getElementById('bar');
-const close = document.getElementById('close');
-const nav = document.getElementById('navbar');
-if (bar) {
-    bar.addEventListener('click', () => {
-        nav.classList.add('active');
-    })
-}
-if (close) {
-    close.addEventListener('click', () => {
-        nav.classList.remove('active');
-    })
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+    const bar = document.getElementById('bar');
+    const close = document.getElementById('close');
+    const nav = document.getElementById('navbar');
+
+    if (bar && nav) {
+        bar.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    }
+
+    if (close && nav) {
+        close.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!nav || !bar || !nav.classList.contains('active')) return;
+
+        const clickedNav = nav.contains(event.target);
+        const clickedMenuButton = bar.contains(event.target);
+
+        if (!clickedNav && !clickedMenuButton) {
+            nav.classList.remove('active');
+        }
+    });
+
     const revealItems = document.querySelectorAll(
         '#anime-history h2, #anime-history p, .history-box, #product1 h2, #product1 > p, #product1 .pro, #banner h4, #banner h2, #banner button, #sm-banner .banner-box, #newsletter .newstext, #newsletter .form, footer .col'
     );
